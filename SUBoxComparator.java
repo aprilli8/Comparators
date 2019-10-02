@@ -2,7 +2,6 @@ import structure5.*;
 import java.util.Comparator;
 
 public class SUBoxComparator implements Comparator<Student>{
-
   /*
    * pre: method parameters are valid Student objects
    * post: returns -1 if Student a's SU Box number is smaller, 0 if they are

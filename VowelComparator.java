@@ -2,7 +2,6 @@ import structure5.*;
 import java.util.Comparator;
 
 public class VowelComparator implements Comparator<Student>{
-
   /*
    * pre: method parameters are valid Student objects
    * post: returns -1 if number of vowels in Student a's name is less than
