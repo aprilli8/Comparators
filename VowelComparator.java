@@ -26,7 +26,7 @@ public class VowelComparator implements Comparator<Student>{
 
   public int vowelTally(Student a){
     int tally = 0;
-    for(int i = 0; i < a.getName(); i++){
+    for(int i = 0; i < a.getName().length(); i++){
       if(((String)(a.getName().charAt(i))).equalsIgnoreCase("a") ||
           ((String)(a.getName().charAt(i))).equalsIgnoreCase("e") ||
             ((String)(a.getName().charAt(i))).equalsIgnoreCase("i") ||
@@ -37,5 +37,5 @@ public class VowelComparator implements Comparator<Student>{
     }
     return tally;
   }
-  
+
 }
