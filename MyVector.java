@@ -6,7 +6,7 @@ public class MyVector<E> extends Vector<E> {
   //pre: c must be non-null and must deal with objects of type E
   //post: list is sorted from smallest largest
   public void sort(Comparator<E> c){
-    for(int i = elementCount - 2; i > 0; i--){
+    for(int i = elementCount - 1; i > 0; i--){
       int big = findMax(i, c);
       swap(i, big);
     }
@@ -29,11 +29,11 @@ public class MyVector<E> extends Vector<E> {
   //pre: a and b are in the bounds of the list
   //post: objects at the indexes a and b swap positions in this list
   private void swap(int a, int b){
-    Assert.pre(a > 0 && b > 0 && a < elementCount - 1 && b < elementCount - 1,
+    Assert.pre(a >= 0 && b >= 0 && a < elementCount && b < elementCount,
       "indexes in swap must be within the bounds of the list.");
     E tempA = get(a);
     E tempB = get(b);
-    set(a, tempA);
-    set(b, tempB);
+    set(a, tempB);
+    set(b, tempA);
   }
 }
