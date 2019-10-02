@@ -7,7 +7,7 @@ public class Student {
 
 	// Be sure to include a toString method here.
 	public String toString(){
-		return name + ", " + address + ", " + (String)campusPhone + ", " + (String)suBox + ", " + (String)homePhone;
+		return name + ", " + address + ", " + campusPhone + ", " + suBox + ", " + homePhone;
 	}
 
 	public Student(String nm, String addr, long campusNum, int su, long homeNum){
