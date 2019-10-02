@@ -10,10 +10,10 @@ public class VowelComparator implements Comparator<Student>{
       Student b's
    */
   public int compare(Student a, Student b){
-    int vowelsA = vowelTally(Student a);
-    int vowelsB = vowelTally(Student b);
+    int vowelsA = vowelTally(a);
+    int vowelsB = vowelTally(b);
 
-    if(vowelsA < vowelsB){
+    if(vowelsA > vowelsB){
       return -1;
     }
     else if(vowelsA == vowelsB){
@@ -27,12 +27,12 @@ public class VowelComparator implements Comparator<Student>{
   public int vowelTally(Student a){
     int tally = 0;
     for(int i = 0; i < a.getName().length(); i++){
-      if(((String)(a.getName().charAt(i))).equalsIgnoreCase("a") ||
-          ((String)(a.getName().charAt(i))).equalsIgnoreCase("e") ||
-            ((String)(a.getName().charAt(i))).equalsIgnoreCase("i") ||
-              ((String)(a.getName().charAt(i))).equalsIgnoreCase("o") ||
-                ((String)(a.getName().charAt(i))).equalsIgnoreCase("u")){
-                  vowelsA++;
+      if(a.getName().substring(i,i+1).equalsIgnoreCase("a") ||
+          a.getName().substring(i,i+1).equalsIgnoreCase("e") ||
+            a.getName().substring(i,i+1).equalsIgnoreCase("i") ||
+              a.getName().substring(i,i+1).equalsIgnoreCase("o") ||
+                a.getName().substring(i,i+1).equalsIgnoreCase("u")){
+                  tally++;
                 }
     }
     return tally;
