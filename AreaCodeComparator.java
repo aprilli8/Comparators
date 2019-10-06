@@ -1,3 +1,4 @@
+//We are the sole authors of the work in this repository.
 import structure5.*;
 import java.util.Comparator;
 

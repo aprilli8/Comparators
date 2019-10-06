@@ -1,3 +1,4 @@
+//We are the sole authors of the work in this repository.
 import structure5.*;
 import java.util.Scanner;
 import java.util.Comparator;
@@ -72,6 +73,9 @@ public class AnalyzeBook{
 
   //method is intended to build a list of area codes that keeps track of the
   //frequency of their appearance
+  //Pre: MyVector v populated with all the students from newphonebook.txt and MyVector a which
+  //is empty
+  //Post: MyVector a is populated with associations between area codes and their frequencies among students
   public static void buildList(MyVector<Student> v, MyVector<Association<Long, Integer>> a){
     for(int i = 0; i < v.size(); i++){
       if(v.get(i).getHomePhone() == -1){

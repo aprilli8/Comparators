@@ -1,3 +1,4 @@
+//We are the sole authors of the work in this repository.
 public class Student {
 	private String name;
 	private String address;
