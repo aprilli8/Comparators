@@ -1,46 +1,72 @@
 import structure5.*;
+import java.util.Scanner;
 import java.util.Comparator;
 
 public class AnalyzeBook{
   public static void main(String[] args){
-    //build Student vector
+    //Build Student vector
     MyVector<Student> vec = new MyVector<Student>();
-    vec.add(new Student("Joe", " ", 10, 5, 6261234568L));
-    vec.add(new Student("Boboa", " ", 10, 3, 4132345689L));
-    vec.add(new Student("Jane", " ", 10, 100, 4133928772L));
-    vec.add(new Student("John", " ", 10, 1, 4132837584L));
-    vec.add(new Student("Robert", " ", 10, 25, 6262037925L));
-    vec.add(new Student("Jacob", " ", 10, 8, 3249895321L));
-    System.out.println(vec);
-
-    //sorts and prints Students alphabetically by first name
-    Comparator<Student> c = new SUBoxComparator();
-    vec.sort(c);
-    for(Student i : vec){
-      System.out.println(i.getSUBox());
+    Scanner in = new Scanner(System.in);
+    for(int i = 0; i < 2052; i++){
+      String name = in.nextLine();
+      String address = in.nextLine();
+      long campusNum = in.nextLong();
+      int SUBox = in.nextInt();
+      long phoneNum = in.nextLong();
+      System.out.println(name + ", " + address + ", " + campusNum + ", " + SUBox + ", " + phoneNum);
+      vec.add(new Student(name, address, campusNum, SUBox, phoneNum));
+      //Skips the '------'
+      System.out.println(in.nextLine());
+      System.out.println(in.nextLine());
     }
+    //System.out.println(vec);
 
-    //sorts and prints Students by SU Box number
+    //Problem 1: sorts and prints out the name of the student first in alphabetical order.
+    System.out.println("Problem 1");
     Comparator<Student> d = new NameComparator();
     vec.sort(d);
-    for(Student i : vec){
-      System.out.println(i.getName());
-    }
+    System.out.println("First name alphabetically: " + vec.get(0).getName());
 
-    //sorts and prints Students by number of vowels in their full name
+    //Problem 2: sorts and prints smallest SU Box and largest SU Box
+    System.out.println();
+    System.out.println("Problem 2");
+    Comparator<Student> c = new SUBoxComparator();
+    vec.sort(c);
+    System.out.println("Smallest SU Box: " + vec.get(0).getSUBox());
+    System.out.println("Largest SU Box: " + vec.get(vec.size()-1).getSUBox());
+
+    //Problem 3: sorts and prints Student's name with largest number of vowels
+    System.out.println();
+    System.out.println("Problem 3");
     Comparator<Student> e = new VowelComparator();
     vec.sort(e);
-    for(Student i : vec){
-      System.out.println(i.getName());
+    System.out.println("Name with largest number of vowels: " + vec.get(0).getName());
+
+    //Problem 4: Sorts a vector of associations to determine which address is shared by most students.
+    //Then print out names of all students at the most common address.
+    System.out.println();
+    System.out.println("Problem 4");
+    //Read in addresses and tally num addresses
+    MyVector<Association<String, Integer>> list = AddressComparator.readIn(vec);
+    list.sort(new AddressComparator());
+    //From list, address shared by most students is "Williams." Print out their names
+    System.out.println("Students living at address 'Williams:'");
+    for(Student s: vec){
+      if(s.getAddress().split(" ")[0].equals("Williams")){
+        System.out.println(s.getName());
+      }
     }
 
-    //sorts and prints students' home phone number area codes by frequency of appearance
+    //Problem 5: sorts and prints first 10 most frequent area codes
+    System.out.println();
+    System.out.println("Problem 5");
+    System.out.println("10 most frequent area codes starting with most common:");
     MyVector<Association<Long, Integer>> areaFreq = new MyVector<Association<Long, Integer>>();
     Comparator<Association<Long, Integer>> f = new AreaCodeComparator();
     buildList(vec, areaFreq);
     areaFreq.sort(f);
-    for(Association<Long, Integer> i : areaFreq){
-      System.out.println(i.getKey());
+    for(int i = areaFreq.size()-1; i > areaFreq.size()-11; i--){
+      System.out.println(areaFreq.get(i).getKey());
     }
   }
 
@@ -48,12 +74,17 @@ public class AnalyzeBook{
   //frequency of their appearance
   public static void buildList(MyVector<Student> v, MyVector<Association<Long, Integer>> a){
     for(int i = 0; i < v.size(); i++){
-      int index = a.indexOf(new Association<Long, Integer>(v.get(i).getHomePhone()/10000000L, null));
-      if(index == -1){
-        a.add(new Association<Long, Integer>(v.get(i).getHomePhone()/10000000L, 1));
+      if(v.get(i).getHomePhone() == -1){
+        i=i;
       }
       else{
-        a.get(index).setValue(a.get(index).getValue()+1);
+        int index = a.indexOf(new Association<Long, Integer>(v.get(i).getHomePhone()/10000000L, null));
+        if(index == -1){
+          a.add(new Association<Long, Integer>(v.get(i).getHomePhone()/10000000L, 1));
+        }
+        else{
+          a.get(index).setValue(a.get(index).getValue()+1);
+        }
       }
     }
   }

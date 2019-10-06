@@ -34,33 +34,4 @@ public class AddressComparator implements Comparator<Association<String, Integer
     return list;
   }
 
-  public static void main(String[] args){
-    //COPY THIS METHOD INTO ANALYZEBOOK
-    MyVector<Student> vec = new MyVector<Student>();
-    Scanner in = new Scanner(System.in);
-    //Change to i < 2,052 when using real phonebook
-    for(int i = 0; i < 2052; i++){
-      String name = in.nextLine();
-      String address = in.nextLine();
-      long campusNum = in.nextLong();
-      int SUBox = in.nextInt();
-      long phoneNum = in.nextLong();
-      System.out.println(name + ", " + address + ", " + campusNum + ", " + SUBox + ", " + phoneNum);
-      vec.add(new Student(name, address, campusNum, SUBox, phoneNum));
-      //Skips the '------'
-      System.out.println(in.nextLine());
-      System.out.println(in.nextLine());
-    }
-    System.out.println(vec);
-    //Read in addresses and tally num addresses
-    MyVector<Association<String, Integer>> list = readIn(vec);
-    list.sort(new AddressComparator());
-    System.out.println(list);
-    //From list, address shared by most students is "Williams." Print out their names
-    for(Student s: vec){
-      if(s.getAddress().split(" ")[0].equals("Williams")){
-        System.out.println(s.getName());
-      }
-    }
-  }
 }
