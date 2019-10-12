@@ -3,10 +3,16 @@ import structure5.*;
 import java.util.Scanner;
 import java.util.Comparator;
 
+/*$ (-1) Good idea making a separate file for your tests, but consider breaking
+    your main method into several helper methods (ex. by question) for better
+    organization and clarity. */
 public class AnalyzeBook{
   public static void main(String[] args){
     //Build Student vector
     MyVector<Student> vec = new MyVector<Student>();
+    /*$ Make sure to have a message that instructs the user on how to input the
+        phonebook data to the program if they don't know how to do it (ex.
+        "Usage: Queries < file.txt"). */
     Scanner in = new Scanner(System.in);
     for(int i = 0; i < 2052; i++){
       String name = in.nextLine();
@@ -14,6 +20,8 @@ public class AnalyzeBook{
       long campusNum = in.nextLong();
       int SUBox = in.nextInt();
       long phoneNum = in.nextLong();
+      /*$ You don't need to print out every student's information since we already
+          have the txt file and this adds to your program's runtime. */
       System.out.println(name + ", " + address + ", " + campusNum + ", " + SUBox + ", " + phoneNum);
       vec.add(new Student(name, address, campusNum, SUBox, phoneNum));
       //Skips the '------'
@@ -78,7 +86,7 @@ public class AnalyzeBook{
   //Post: MyVector a is populated with associations between area codes and their frequencies among students
   public static void buildList(MyVector<Student> v, MyVector<Association<Long, Integer>> a){
     for(int i = 0; i < v.size(); i++){
-      if(v.get(i).getHomePhone() == -1){
+      if(v.get(i).getHomePhone() == -1){ //$ It doesn't seem like you need this if statement?
         i=i;
       }
       else{

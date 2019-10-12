@@ -23,6 +23,11 @@ Questions (from lab handout):
     with any other element in the list, which cam violate the initial ordering of equal values in the list. Quick sort is also not stable because it places elements less than a certain pivot element before that pivot, and elements greater than the pivot after the pivot, so the initial order of equal elements can be violated.
 
 3. Problem 6.14
+   *$ (-1) Actually, the answer is no. We have not moved any other elements, so
+      we cannot recurse on the left and right. (However, the pivot element can
+      be removed and the remaining n-1 elements can be recursed on. The array
+      will be correctly sorted with these changes, but it the algorithm will be
+      significantly slower (and will no longer look like quicksort).)*
     Yes, because partition would return the correct index of the leftmost value, and then quicksort would continue to execute recursively.
 
 4. Provide a brief, high-level description of the purpose of the code in each submitted Java file.
@@ -56,6 +61,7 @@ Problem 1
 First name alphabetically: Aalayah Rasheed
 
 Problem 2
+*$ Make sure to print the names of the students who own these SU boxes too.*
 Smallest SU Box: 1000
 Largest SU Box: 5008
 
@@ -63,6 +69,9 @@ Problem 3
 Name with largest number of vowels: Pierre-Alexandre C Meloty-Kapella
 
 Problem 4
+*$ Actually, this problem was aiming to search through the full address (aka.
+   building & room number) not just the building. Can you think of a way to
+   modify your code to get the correct answer?*
 Students living at address 'Williams:'
 Sophia A Sequeira
 Miriam E Chotiner-Gardner

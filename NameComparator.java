@@ -9,6 +9,8 @@ public class NameComparator implements Comparator<Student>{
       0 if they are the same, and 1 if Student a's name comes after Student b's
    */
   public int compare(Student a, Student b){
+     /*$ You can also just return a.getName().compareTo(b.getName()) since this
+         will output -1, 0, or 1 accordingly :). */
     if(a.getName().compareToIgnoreCase(b.getName()) < 0){
       return -1;
     }
