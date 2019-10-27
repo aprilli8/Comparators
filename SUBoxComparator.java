@@ -8,6 +8,7 @@ public class SUBoxComparator implements Comparator<Student>{
    * post: returns -1 if Student a's SU Box number is smaller, 0 if they are
       equal, and 1 if Student a's SU Box number is larger than Student b's
    */
+    //$ instead of the if-elseif-else, just return a.getSUBox() - b.getSUBox()...
   public int compare(Student a, Student b){
     if(a.getSUBox() < b.getSUBox()){
       return -1;

@@ -23,7 +23,7 @@ public class VowelComparator implements Comparator<Student>{
       return 1;
     }
   }
-
+    //$ Nice!
   public int vowelTally(Student a){
     int tally = 0;
     for(int i = 0; i < a.getName().length(); i++){

@@ -10,6 +10,12 @@ public class AreaCodeComparator implements Comparator<Association<Long, Integer>
       the frequency of b
    */
   public int compare(Association<Long, Integer> a, Association<Long, Integer> b){
+     /*$ A cool trick for ints is that you can just subtract them to return the
+         correct result. Aka:
+         '''
+            return a.getValue() - b.getValue();
+         '''
+         */
     if(a.getValue() < b.getValue()){
       return -1;
     }
